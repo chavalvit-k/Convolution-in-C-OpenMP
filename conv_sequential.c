@@ -18,18 +18,20 @@ int main(){
 
     // implement here
     int *FF = malloc(sizeof(int) * NF);
+
     for (int i=0 ; i<NF ; i++) {
         FF[i] = F[NF-i-1];
     }
+
     int NR = NA - NF + 1;
     int *R = malloc(sizeof(int) * NR);
 
     for (int i=0 ; i<NR ; i++) {
-        int sum = 0;
+        int sum_of_product = 0;
         for (int j=0 ; j<NF ; j++) {
-            sum += A[i+j] * FF[j];
+            sum_of_product += A[i+j] * FF[j];
         }
-        R[i] = sum;
+        R[i] = sum_of_product;
     }
 
     for (int i=0 ; i<NR ; i++) {
@@ -38,9 +40,9 @@ int main(){
 
     // ---- free memory ----
     free(F);
-    free(FF);
-    free(R);
     free(A);
+    free(FF);
+    free(R); 
     // ---- end free ----
     return 0;
 }
