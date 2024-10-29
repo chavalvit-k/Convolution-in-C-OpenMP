@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<omp.h>
 
 int main(){
     // ---- input and malloc A, F ----
@@ -44,5 +45,6 @@ int main(){
     free(FF);
     free(R); 
     // ---- end free ----
+
     return 0;
 }
