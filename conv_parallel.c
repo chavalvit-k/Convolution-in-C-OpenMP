@@ -27,8 +27,7 @@ int main(){
     int NR = NA - NF + 1;
     int *R = malloc(sizeof(int) * NR);
 
-    double start_time = omp_get_wtime();
-
+    omp_set_num_threads(8);
     #pragma omp parallel for
     for (int i=0 ; i<NR ; i++) {
         int sum_of_product = 0;
@@ -38,13 +37,10 @@ int main(){
         R[i] = sum_of_product;
     }
 
-    double end_time = omp_get_wtime();
-
     for (int i=0 ; i<NR ; i++) {
         printf("%d\n", R[i]);
     }
 
-    printf("Computation Time: %f seconds\n", end_time - start_time);
     // ---- free memory ----
     free(F);
     free(A);
